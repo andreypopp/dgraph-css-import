@@ -1,0 +1,2 @@
+@import './button.css';
+@import url(should not be treated a dep);

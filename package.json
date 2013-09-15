@@ -1,0 +1,33 @@
+{
+  "name": "dgraph-css-import",
+  "version": "0.0.0",
+  "description": "Transformer for dgraph to extract CSS imports as dependencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha specs.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "andreypopp/dgraph-css-import"
+  },
+  "keywords": [
+    "dgraph",
+    "css",
+    "import",
+    "bundle",
+    "css-pack"
+  ],
+  "author": "Andrey Popp <8mayday@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "semver": "~2.1.0",
+    "jshint": "~2.1.10",
+    "mocha": "~1.12.1",
+    "dgraph": "~0.1.0",
+    "as-stream": "~0.1.0",
+    "stream-aggregate": "~0.1.1"
+  },
+  "dependencies": {
+    "css-parse": "~1.5.3"
+  }
+}
