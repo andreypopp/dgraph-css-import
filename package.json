@@ -23,7 +23,7 @@
     "semver": "~2.1.0",
     "jshint": "~2.1.10",
     "mocha": "~1.12.1",
-    "dgraph": "~0.1.0",
+    "dgraph": "~0.1.2",
     "as-stream": "~0.1.0",
     "stream-aggregate": "~0.1.1"
   },

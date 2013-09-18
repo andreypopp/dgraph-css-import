@@ -15,7 +15,7 @@ module.exports = function(mod, g) {
       if (deps.indexOf(dep) === -1) deps.push(dep)
     })
 
-  return g.resolveDeps(deps, mod)
+  return g.resolveMany(deps, mod)
     .then(function(deps) { return {deps: deps} })
 }
 
