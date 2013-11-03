@@ -5,6 +5,9 @@ var path = require('path'),
     aggregate = require('stream-aggregate'),
     asStream = require('as-stream')
 
+var ok = assert.ok,
+    equal = assert.equal
+
 function fixture(name) {
   return path.join(__dirname, 'fixtures', name)
 }
@@ -16,7 +19,7 @@ describe('dgraph-css-import', function() {
     aggregate(dgraph(entry, {transform: transform}), function(err, graph) {
       if (err) return done(err)
 
-      assert.equal(graph.length, 3)
+      equal(graph.length, 3)
 
       var index = {}
       graph.forEach(function(n) { index[n.id] = n})
@@ -25,18 +28,24 @@ describe('dgraph-css-import', function() {
           button = index[fixture('button.css')],
           icons = index[fixture('icons.css')]
 
-      assert.ok(main)
-      assert.ok(main.deps['./button.css'])
-      assert.equal(main.deps['./button.css'], fixture('button.css'))
+      ok(main)
+      ok(main.deps)
+      ok(main.tree)
+      ok(main.deps['./button.css'])
+      equal(main.deps['./button.css'], fixture('button.css'))
 
-      assert.ok(button)
-      assert.ok(button.deps['./icons.css'])
-      assert.equal(button.deps['./icons.css'], fixture('icons.css'))
+      ok(button)
+      ok(button.deps)
+      ok(button.tree)
+      ok(button.deps['./icons.css'])
+      equal(button.deps['./icons.css'], fixture('icons.css'))
 
-      assert.ok(icons)
+      ok(icons)
+      ok(icons.tree)
+      ok(icons.deps)
 
       done()
     })
   })
-  
+
 })
