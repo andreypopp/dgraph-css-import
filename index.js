@@ -5,10 +5,11 @@ var parse = require('css-parse')
 module.exports = function(mod, g) {
   if (!/.*\.(css|styl|sass|scss|less)$/.exec(mod.id)) return
 
-  var css = parse(mod.source.toString()),
-      deps = []
+  var src = mod.source.toString();
+  var tree = parse(src, {position: true});
+  var deps = [];
 
-  css.stylesheet.rules
+  tree.stylesheet.rules
     .filter(isImportRule)
     .forEach(function(r) {
       var dep = unquote(r.import)
@@ -16,7 +17,7 @@ module.exports = function(mod, g) {
     })
 
   return g.resolveMany(deps, mod)
-    .then(function(deps) { return {deps: deps} })
+    .then(function(deps) { return {deps: deps, tree: tree} })
 }
 
 function isImportRule(r) {
