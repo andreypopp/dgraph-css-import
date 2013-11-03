@@ -6,10 +6,10 @@ module.exports = function(mod, g) {
   if (!/.*\.(css|styl|sass|scss|less)$/.exec(mod.id)) return
 
   var src = mod.source.toString();
-  var tree = parse(src, {position: true});
+  var style = parse(src, {position: true});
   var deps = [];
 
-  tree.stylesheet.rules
+  style.stylesheet.rules
     .filter(isImportRule)
     .forEach(function(r) {
       var dep = unquote(r.import)
@@ -17,7 +17,7 @@ module.exports = function(mod, g) {
     })
 
   return g.resolveMany(deps, mod)
-    .then(function(deps) { return {deps: deps, tree: tree} })
+    .then(function(deps) { return {deps: deps, style: style} })
 }
 
 function isImportRule(r) {

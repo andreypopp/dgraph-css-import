@@ -30,18 +30,18 @@ describe('dgraph-css-import', function() {
 
       ok(main)
       ok(main.deps)
-      ok(main.tree)
+      ok(main.style)
       ok(main.deps['./button.css'])
       equal(main.deps['./button.css'], fixture('button.css'))
 
       ok(button)
       ok(button.deps)
-      ok(button.tree)
+      ok(button.style)
       ok(button.deps['./icons.css'])
       equal(button.deps['./icons.css'], fixture('icons.css'))
 
       ok(icons)
-      ok(icons.tree)
+      ok(icons.style)
       ok(icons.deps)
 
       done()
