@@ -28,6 +28,6 @@
     "stream-aggregate": "~0.1.1"
   },
   "dependencies": {
-    "css-parse": "~1.5.3"
+    "css-parse": "git+https://github.com/visionmedia/css-parse"
   }
 }

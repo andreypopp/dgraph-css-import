@@ -6,7 +6,7 @@ module.exports = function(mod, g) {
   if (!/.*\.(css|styl|sass|scss|less)$/.exec(mod.id)) return
 
   var src = mod.source.toString();
-  var style = parse(src, {position: true});
+  var style = parse(src, {position: true, source: mod.id});
   var deps = [];
 
   style.stylesheet.rules
