@@ -23,9 +23,9 @@
     "semver": "~2.1.0",
     "jshint": "~2.1.10",
     "mocha": "~1.12.1",
-    "dgraph": "~0.1.2",
+    "dgraph": "~0.12.0",
     "as-stream": "~0.1.0",
-    "stream-aggregate": "~0.1.1"
+    "stream-aggregate-promise": "~0.1.1"
   },
   "dependencies": {
     "css-parse": "git+https://github.com/andreypopp/css-parse"

@@ -16,7 +16,16 @@ module.exports = function(mod, g) {
       if (deps.indexOf(dep) === -1) deps.push(dep)
     })
 
-  return g.resolveMany(deps, mod)
+  var parent = Object.create(mod);
+
+  parent.extensions = ['.css'].concat(g.extensions);
+  parent.packageFilter = function(pkg) {
+    if (pkg.style)
+      pkg.browser = pkg.style;
+    return pkg;
+  };
+
+  return g.resolveMany(deps, parent)
     .then(function(deps) { return {deps: deps, style: style} })
 }
 
