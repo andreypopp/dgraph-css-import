@@ -20,9 +20,15 @@ module.exports = function(mod, g) {
 
   parent.extensions = ['.css'].concat(g.extensions);
   parent.packageFilter = function(pkg) {
-    if (pkg.style)
-      pkg.browser = pkg.style;
-    return pkg;
+    var shimmed = {};
+
+    for (var k in pkg)
+      shimmed[k] = pkg[k];
+
+    if (shimmed.style)
+      shimmed.browser = shimmed.style;
+
+    return shimmed;
   };
 
   return g.resolveMany(deps, parent)
